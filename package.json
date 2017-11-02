@@ -1,0 +1,11 @@
+{
+  "name": "todoapp",
+  "version": "0.0.1",
+  "description": "Learning JavaScript form this course https://watchandcode.com/courses/60264/lectures/928382",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Stefan Isarie",
+  "license": "ISC"
+}
