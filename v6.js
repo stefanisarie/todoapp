@@ -1,10 +1,15 @@
 // Define the todos
-var todoList = {
+var app = {
   // our todos array
-  todos: [],
+  todos: [
+  	{todoText:'Learn JavaScript', completed: false},
+  	{todoText:'Learn VueJS', completed: false},
+  	{todoText:'Learn Angular JS', completed: false},
+  	{todoText:'Learn Webpack', completed: false}
+  ],
 
   // display the todos we currently have
-  displayTodos: function(){
+  display: function(){
     if( this.todos.length === 0 ){
     	console.log('Your todo list is empty!');
     } else {
@@ -20,29 +25,57 @@ var todoList = {
   },
 
   // add new todos to our array
-  addTodo: function(passedTodoText) {
+  add: function(passedTodoText) {
     this.todos.push({
       todoText: passedTodoText,
       completed: false
     });
-    this.displayTodos();
+    this.display();
   },
 
   // change a todo
-  changeTodo: function (position, passedTodoText) {
+  update: function (position, passedTodoText) {
     this.todos[position].todoText = passedTodoText;
-    this.displayTodos();
+    this.display();
   },
 
   // toggle completed todo
   toggleCompleted: function(position){
     this.todos[position].completed = !this.todos[position].completed;
-    this.displayTodos();
+    this.display();
+  },
+
+  // toggle all todos
+  toggleAll: function(){
+  	var totalTodos = this.todos.length;
+  	var completedTodos = 0;
+
+    // Get number of completed todos
+  	for ( var i = 0; i < totalTodos; i++ ){
+  		if ( this.todos[i].completed === true ){
+  			completedTodos++;
+  		}
+  	}
+
+  	// Case 1: If all todos are completed, make them not completed
+  	if ( completedTodos === totalTodos ){
+  		// Make everything false.
+  		for ( var k = 0; k < totalTodos; k++ ){
+  			this.todos[k].completed = false;
+  		}
+  	} else {
+      // Case 2: Otherwise, make all todos completed
+      for ( var j = 0; j < totalTodos; j++ ){
+  			this.todos[j].completed = true;
+  		}
+    }
+
+    this.display();
   },
 
   // delete a todo
-  deleteTodo: function(position){
+  delete: function(position){
     this.todos.splice(position, 1);
-    this.displayTodos();
+    this.display();
   }
 };
